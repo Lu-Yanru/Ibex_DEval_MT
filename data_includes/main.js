@@ -65,6 +65,21 @@ PennController("PersonalData",
 
                ,
 
+               //newTextInput("id", "")
+               //.log()
+               //.size(300, 20)
+               //,
+
+               //newText("idtext", "Prolific ID:")
+               //.css("font-size", "18px")
+               //,
+
+               //newCanvas("idcanvas", 600, 70)
+               //.add(0, 20, getText("idtext"))
+               //.add(350, 23, getTextInput("id"))
+               //.print()
+               //,
+
                newTextInput("language", "")
                .settings.log()
                .lines(0)
@@ -169,7 +184,8 @@ PennController("PersonalData",
                .settings.css("font-size", "20px")
                .print()
                .wait(getTextInput("age")
-                     .test.text(/^\d+$/) // ende age input
+                     .test.text(/^\d+$/) // matches a string with only digits
+                     // ende age input
 
                     .and(getDropDown("gender")
                       .test.selected()
@@ -177,8 +193,12 @@ PennController("PersonalData",
 
 
                      .and(getTextInput("language")
-                       .test.text(/[A-Za-z]+/)
+                       .test.text(/[A-Za-z]+/) // matches a string with at least one alphabet
                           ) //ende language scale
+
+                      //.and(getTextInput("id")
+                      //  .test.text(/^(?!\s*$).+/) //matched a string that contains at least one non-space character
+                      //)
 
                      //.and(getDropDown("education")
                     //   .test.selected()
@@ -204,6 +224,11 @@ PennController("PersonalData",
                     ) // ende wait
 
                ,
+
+               //newVar("id")
+               //.global()
+               //.set(getTextInput("id"))
+               //,
 
                newVar("gender")
                .settings.global()
@@ -235,6 +260,7 @@ PennController("PersonalData",
      )
 
     //.setOption("hideProgressBar", "true")
+    //.log("id",         getVar("id"))
     .log( "gender" ,   getVar("gender"))
     .log( "age" ,      getVar("age"))
     .log( "language" , getVar("language"))
@@ -431,6 +457,7 @@ PennController.Template("practice.csv", variable =>
     )
 
     //.setOption("hideProgressBar", "true" )
+    //.log("id",         getVar("id"))
     .log( "gender"               , getVar("gender")         )
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
@@ -601,6 +628,7 @@ PennController("exp_start",
     )
 
     //.setOption("hideProgressBar", "true" )
+    //.log("id",         getVar("id"))
     .log( "gender"               , getVar("gender")         )
     .log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
