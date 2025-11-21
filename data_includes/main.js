@@ -2,7 +2,7 @@ PennController.ResetPrefix( null );
 //AddHost("https://amor.cms.hu-berlin.de/~idslfahm/ibex_bilder/PWI_BB/");
 PennController.DebugOff()
 // change the tedxt on the progress bar
-var progressBarText = "Fortschritt";
+var progressBarText = "progress";
 
 PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice1_start1")//, randomize("practice1"), "block1_start1", randomize("fillers1"), "send", "end" )
 
@@ -66,18 +66,19 @@ PennController("PersonalData",
                ,
 
                newTextInput("language", "")
-               .settings.log("last")
+               .settings.log()
+               .lines(0)
+               .size(300, 50)
                //.add( "Deutsch" , "Deutsch und andere Sprache(n) vor dem 5. Lebensjahr" , "andere" )
 
                ,
 
                newText("languagetext", "Languages you speak fluently:")
                .settings.css("font-size", "18px")
-
                ,
 
 
-               newCanvas("languagecanvas", 600, 35)
+               newCanvas("languagecanvas", 600, 70)
                .add(0, 20, getText("languagetext"))
                .add(350, 23, getTextInput("language"))
                .print()
@@ -105,19 +106,7 @@ PennController("PersonalData",
 
                newTextInput("age", "")
                .settings.log()
-               //.add( "17 oder j&uuml;nger" , "18" , "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41" "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99",  "100 oder &auml;lter" )
-               //newDropDown("age", "")
-               //.settings.log("last")
-               //.add("17 oder j&uuml;nger",
-               //"18-25",
-               //"26-35",
-               //"36-45",
-               //"46-55",
-               //"56-65",
-               //"66-75",
-               //"76-85",
-               //"86-95",
-               //"96 oder &auml;lter")
+               .size(300, 20)
                ,
 
                newText("agetext", "Age:")
@@ -181,18 +170,14 @@ PennController("PersonalData",
                .print()
                .wait(getTextInput("age")
                      .test.text(/^\d+$/) // ende age input
-                      //getDropDown("age")
-                      //.testNot.selected("17 oder j&uuml;nger")
 
                     .and(getDropDown("gender")
                       .test.selected()
                     ) //ende gender scale
 
 
-                     .and(getDropDown("language")
-                       .test.text()
-
-                          )
+                     .and(getTextInput("language")
+                       .test.text(/^\d*[a-z][a-z0-9]*$/)
                           ) //ende language scale
 
                      //.and(getDropDown("education")
@@ -228,29 +213,20 @@ PennController("PersonalData",
 
                newVar("age")
                .settings.global()
-               .set( getDropDown("age") )
+               .set( getTextInput("age") )
 
                ,
 
                newVar("language")
                .settings.global()
-               .set( getDropDown("language") )
+               .set( getTextInput("language") )
 
                ,
 
-               newVar("education")
-               .settings.global()
-               .set(getDropDown("education"))
-               ,
-
-               newVar("bundesland")
-               .settings.global()
-               .set(getDropDown("bundesland"))
-               ,
-               newVar("ort")
-               .settings.global()
-               .set(getTextInput("ort"))
-               ,
+               //newVar("education")
+               //.settings.global()
+               //.set(getDropDown("education"))
+               //,
 
                newVar("browser")
                .settings.global()
