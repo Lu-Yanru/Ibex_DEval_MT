@@ -330,15 +330,15 @@ PennController.Template("practice.csv", variable =>
              .print()
              ,
 
-             newText("ans1", "Yes")
+             newText("yes1", "Yes")
              //.settings.center()
-             .settings.after(newText("no", "No").settings.css("padding-left", "50pt").settings.css("font-size", "medium"))
+             .settings.after(newText("no1", "No").settings.css("padding-left", "50pt").settings.css("font-size", "medium"))
              .settings.css("font-size", "medium")
              .print()
              ,
 
              newSelector("select1")
-             .settings.add(getText("ans1"), getText("no"))
+             .settings.add(getText("yes1"), getText("no1"))
              .log("last")
              ,
 
@@ -350,7 +350,7 @@ PennController.Template("practice.csv", variable =>
              .print()
              ,
 
-             newText("ans2", "Female")
+             newText("f", "Female")
              //.settings.center()
              .settings.after(newText("m", "Male")
                             .settings.css("padding-left", "50pt")
@@ -367,7 +367,7 @@ PennController.Template("practice.csv", variable =>
              ,
 
              newSelector("select2")
-             .settings.add(getText("ans2"), getText("m"), getText("n"), getText("idk"))
+             .settings.add(getText("f"), getText("m"), getText("n"), getText("idk"))
              .log("last")
              ,
 
@@ -379,12 +379,12 @@ PennController.Template("practice.csv", variable =>
              .print()
              ,
 
-             newText("ans3", "Yes")
+             newText("yes3", "Yes")
              //.settings.center()
              .settings.after(newText("no3", "No")
                             .settings.css("padding-left", "50pt")
                             .settings.css("font-size", "medium")
-                            .after(newText("ns", "Not sure")
+                            .after(newText("notsure", "Not sure")
                                         .css("padding-left", "50pt")
                                   )
                             )
@@ -393,7 +393,7 @@ PennController.Template("practice.csv", variable =>
              ,
 
              newSelector("select3")
-             .settings.add(getText("ans3"), getText("no3"), getText("ns"))
+             .settings.add(getText("yes3"), getText("no3"), getText("notsure"))
              .log("last")
              ,
 
@@ -500,15 +500,15 @@ PennController("exp_start",
              .print()
              ,
 
-             newText("ans1", "Yes")
+             newText("yes1", "Yes")
              //.settings.center()
-             .settings.after(newText("no", "No").settings.css("padding-left", "50pt").settings.css("font-size", "medium"))
+             .settings.after(newText("no1", "No").settings.css("padding-left", "50pt").settings.css("font-size", "medium"))
              .settings.css("font-size", "medium")
              .print()
              ,
 
              newSelector("select1")
-             .settings.add(getText("ans1"), getText("no"))
+             .settings.add(getText("yes1"), getText("no1"))
              .log("last")
              ,
 
@@ -520,7 +520,7 @@ PennController("exp_start",
              .print()
              ,
 
-             newText("ans2", "Female")
+             newText("f", "Female")
              //.settings.center()
              .settings.after(newText("m", "Male")
                             .settings.css("padding-left", "50pt")
@@ -537,7 +537,7 @@ PennController("exp_start",
              ,
 
              newSelector("select2")
-             .settings.add(getText("ans2"), getText("m"), getText("n"), getText("idk"))
+             .settings.add(getText("f"), getText("m"), getText("n"), getText("idk"))
              .log("last")
              ,
 
@@ -549,12 +549,12 @@ PennController("exp_start",
              .print()
              ,
 
-             newText("ans3", "Yes")
+             newText("yes3", "Yes")
              //.settings.center()
              .settings.after(newText("no3", "No")
                             .settings.css("padding-left", "50pt")
                             .settings.css("font-size", "medium")
-                            .after(newText("ns", "Not sure")
+                            .after(newText("notsure", "Not sure")
                                         .css("padding-left", "50pt")
                                   )
                             )
@@ -563,7 +563,7 @@ PennController("exp_start",
              ,
 
              newSelector("select3")
-             .settings.add(getText("ans3"), getText("no3"), getText("ns"))
+             .settings.add(getText("yes3"), getText("no3"), getText("notsure"))
              .log("last")
              ,
 
