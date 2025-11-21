@@ -418,9 +418,9 @@ PennController.Template("practice.csv", variable =>
              .print()
              .wait(//getTimer("timeout").test.ended()
                   //.or(
-                  getSelector("select1").test.selected()
-                  .and(getSelector("select2").test.selected())
-                  .and(getSelector("select3").test.selected())
+                  getSelector("match").test.selected()
+                  .and(getSelector("gender").test.selected())
+                  .and(getSelector("makesense").test.selected())
                   //)
                   )
            // cannot click weiter until all scales are selected or when the timer ended
@@ -588,9 +588,9 @@ PennController("exp_start",
              .print()
              .wait(//getTimer("timeout").test.ended()
                   //.or(
-                  getSelector("select1").test.selected()
-                  .and(getSelector("select2").test.selected())
-                  .and(getSelector("select3").test.selected())
+                  getSelector("match").test.selected()
+                  .and(getSelector("gender").test.selected())
+                  .and(getSelector("makesense").test.selected())
                   //)
                   )
            // cannot click weiter until all scales are selected or when the timer ended
