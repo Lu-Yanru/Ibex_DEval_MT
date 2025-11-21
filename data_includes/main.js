@@ -177,7 +177,7 @@ PennController("PersonalData",
 
 
                      .and(getTextInput("language")
-                       .test.text(/^\d*[a-z][a-z0-9]*$/)
+                       .test.text(/[A-Za-z]+/)
                           ) //ende language scale
 
                      //.and(getDropDown("education")
@@ -315,7 +315,7 @@ PennController.Template("practice.csv", variable =>
 
              ,
 
-             newCanvas("canvas", 1000, 130)
+             newCanvas("canvas", 1000, 100)
              .add(0, 0, getText("sentence"))
              .add(0, 40, getText("extraction"))
              .print()
@@ -323,26 +323,79 @@ PennController.Template("practice.csv", variable =>
              ,
 
              newText("q1", "Does the expression match the job description in the sentence?")
+             ,
+
+             newCanvas("q1Canvas", 1000, 30)
+             .add(0, 0, getText("q1"))
              .print()
              ,
 
-             newText("yes", "<small>Yes</small>")
-             .settings.center()
-             .settings.after(newText("no", "<small>No</small>").settings.css("padding-left", "100pt").settings.css("font-size", "medium"))
+             newText("ans1", "Yes")
+             //.settings.center()
+             .settings.after(newText("no", "No").settings.css("padding-left", "50pt").settings.css("font-size", "medium"))
              .settings.css("font-size", "medium")
              .print()
              ,
 
              newSelector("select1")
-             .settings.add(getText("yes"), getText("no"))
+             .settings.add(getText("ans1"), getText("no"))
              .log("last")
              ,
 
-             //newCanvas("q1Canvas", 1000, 70)
-             //.add(0,0, getText("q1"))
-             //.add(0, 20, getSelector("select1"))
-             //.print()
-             //,
+             newText("q2", "What is the gender of the job description?")
+             ,
+
+             newCanvas("q2Canvas", 1000, 60)
+             .add(0, 30, getText("q2"))
+             .print()
+             ,
+
+             newText("ans2", "Female")
+             //.settings.center()
+             .settings.after(newText("m", "Male")
+                            .settings.css("padding-left", "50pt")
+                            .settings.css("font-size", "medium")
+                            .after(newText("n", "Neutral")
+                                  .css("padding-left", "50pt")
+                                  .after(newText("idk", "I don't know")
+                                        .css("padding-left", "50pt")
+                                        )
+                                  )
+                            )
+             .settings.css("font-size", "medium")
+             .print()
+             ,
+
+             newSelector("select2")
+             .settings.add(getText("ans2"), getText("m"), getText("n"), getText("idk"))
+             .log("last")
+             ,
+
+             newText("q3", "Does the sentence make sense?")
+             ,
+
+             newCanvas("q3Canvas", 1000, 60)
+             .add(0, 30, getText("q3"))
+             .print()
+             ,
+
+             newText("ans3", "Yes")
+             //.settings.center()
+             .settings.after(newText("no3", "No")
+                            .settings.css("padding-left", "50pt")
+                            .settings.css("font-size", "medium")
+                            .after(newText("ns", "Not sure")
+                                        .css("padding-left", "50pt")
+                                  )
+                            )
+             .settings.css("font-size", "medium")
+             .print()
+             ,
+
+             newSelector("select3")
+             .settings.add(getText("ans3"), getText("no3"), getText("ns"))
+             .log("last")
+             ,
 
              newCanvas("space", 1, 50)
              .print()
