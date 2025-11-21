@@ -317,30 +317,32 @@ PennController.Template("practice.csv", variable =>
 
              newCanvas("canvas", 1000, 130)
              .add(0, 0, getText("sentence"))
-             .add(0, 20, getText("extraction"))
+             .add(0, 40, getText("extraction"))
              .print()
 
+             ,
+
+             newText("q1", "Does the expression match the job description in the sentence?")
+             .print()
              ,
 
              newText("yes", "<small>Yes</small>")
              .settings.center()
-             .settings.after(newText("no", "<small>No</small>").settings.css("padding-left", "100pt").settings.css("font-size", "medium")))
-             .settings.css("padding-left", "100pt").settings.css("font-size", "medium"))
-             ,
-
-             newText("q1", "Does the expression match the job description in the sentence?")
+             .settings.after(newText("no", "<small>No</small>").settings.css("padding-left", "100pt").settings.css("font-size", "medium"))
+             .settings.css("font-size", "medium")
+             .print()
              ,
 
              newSelector("select1")
-             .settings.add(getText("Yes"), getText("No"))
+             .settings.add(getText("yes"), getText("no"))
              .log("last")
              ,
 
-             newCanvas("q1Canvas", 1000, 70)
-             .add(0,0, getText("q1"))
-             .add(0, 20, getSelecter("select1"))
-             .print()
-             ,
+             //newCanvas("q1Canvas", 1000, 70)
+             //.add(0,0, getText("q1"))
+             //.add(0, 20, getSelector("select1"))
+             //.print()
+             //,
 
              newCanvas("space", 1, 50)
              .print()
@@ -366,7 +368,7 @@ PennController.Template("practice.csv", variable =>
                   getSelector("select1").test.selected()
                   //)
                   )
-           )// cannot click weiter until all scales are selected or when the timer ended
+           // cannot click weiter until all scales are selected or when the timer ended
            //.callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
            ,
 
