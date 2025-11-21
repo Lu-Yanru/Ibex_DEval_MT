@@ -337,7 +337,7 @@ PennController.Template("practice.csv", variable =>
              .print()
              ,
 
-             newSelector("select1")
+             newSelector("match")
              .settings.add(getText("yes1"), getText("no1"))
              .log("last")
              ,
@@ -366,7 +366,7 @@ PennController.Template("practice.csv", variable =>
              .print()
              ,
 
-             newSelector("select2")
+             newSelector("gender")
              .settings.add(getText("f"), getText("m"), getText("n"), getText("idk"))
              .log("last")
              ,
@@ -392,7 +392,7 @@ PennController.Template("practice.csv", variable =>
              .print()
              ,
 
-             newSelector("select3")
+             newSelector("makesense")
              .settings.add(getText("yes3"), getText("no3"), getText("notsure"))
              .log("last")
              ,
@@ -507,7 +507,7 @@ PennController("exp_start",
              .print()
              ,
 
-             newSelector("select1")
+             newSelector("match")
              .settings.add(getText("yes1"), getText("no1"))
              .log("last")
              ,
@@ -536,7 +536,7 @@ PennController("exp_start",
              .print()
              ,
 
-             newSelector("select2")
+             newSelector("gender")
              .settings.add(getText("f"), getText("m"), getText("n"), getText("idk"))
              .log("last")
              ,
@@ -562,7 +562,7 @@ PennController("exp_start",
              .print()
              ,
 
-             newSelector("select3")
+             newSelector("makesense")
              .settings.add(getText("yes3"), getText("no3"), getText("notsure"))
              .log("last")
              ,
