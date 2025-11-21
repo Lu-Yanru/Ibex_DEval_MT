@@ -4,7 +4,7 @@ PennController.DebugOff()
 // change the tedxt on the progress bar
 var progressBarText = "progress";
 
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice", "exp_start", randomize("exp"), "send", "end") 
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice", "exp_start", randomize("exp"), "send", "end")
 
 
 
@@ -419,7 +419,7 @@ PennController.Template("practice.csv", variable =>
              .wait(//getTimer("timeout").test.ended()
                   //.or(
                   getSelector("select1").test.selected()
-                  .and(getSelecter("select2").test.selected())
+                  .and(getSelector("select2").test.selected())
                   .and(getSelector("select3").test.selected())
                   //)
                   )
@@ -472,7 +472,7 @@ PennController("exp_start",
 
     PennController.Template("test.csv", variable =>
 
-    PennController("practice",
+    PennController("exp",
 
 
              newText("sentence", variable.Sentence)
@@ -589,7 +589,7 @@ PennController("exp_start",
              .wait(//getTimer("timeout").test.ended()
                   //.or(
                   getSelector("select1").test.selected()
-                  .and(getSelecter("select2").test.selected())
+                  .and(getSelector("select2").test.selected())
                   .and(getSelector("select3").test.selected())
                   //)
                   )
