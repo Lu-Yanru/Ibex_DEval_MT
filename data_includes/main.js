@@ -4,7 +4,7 @@ PennController.DebugOff()
 // change the tedxt on the progress bar
 var progressBarText = "progress";
 
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice")//, "exp_start", randomize("exp"), "send", "end" )
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice", "exp_start", randomize("exp"), "send", "end") 
 
 
 
@@ -419,6 +419,8 @@ PennController.Template("practice.csv", variable =>
              .wait(//getTimer("timeout").test.ended()
                   //.or(
                   getSelector("select1").test.selected()
+                  .and(getSelecter("select2").test.selected())
+                  .and(getSelector("select3").test.selected())
                   //)
                   )
            // cannot click weiter until all scales are selected or when the timer ended
@@ -468,145 +470,147 @@ PennController("exp_start",
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Main
 
-    PennController.Template("list1-1.csv", variable =>
+    PennController.Template("test.csv", variable =>
 
-        PennController("exp",
-
-
-                 newText("sa", variable.sa)
-                 .settings.css("font-size", "18px")
-
-                 ,
-
-                 newText("sb", variable.sb)
-                 .settings.css("font-size", "18px")
-
-                 ,
-
-                 newText("frage", "Inwieweit w&uuml;rdest du <b>Person B</b> die folgenden Eigenschaften zuschreiben?")
-                 //.settings.css("font-size", "18px")
-                 ,
-
-                 newCanvas("canvas", 1000, 130)
-                 .add(0, 0, getText("sa"))
-                 .add(0, 20, getText("sb"))
-                 .add(0, 80, getText("frage"))
-                 .print()
-
-                 ,
-
-                 newScale("pingelig", 6)
-                 .button()
-                 .radio()
-                 .before(newText("pingeligtext1", "gar nicht pingelig").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-                 .after(newText("pingeligtext1", "sehr pingelig"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-                 .labelsPosition("top")
-                 .log("last")
-                 ,
-
-                 newCanvas("pingeligCanvas", 1000, 70)
-                 .add(0,0, getScale("pingelig"))
-                 .print()
-                 ,
-
-                 newScale("gebildet", 6)
-                 .button()
-                 .radio()
-                 .before(newText("gebildettext1", "gar nicht gebildet").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-                 .after(newText("gebildettext1", "sehr gebildet"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-                 .labelsPosition("top")
-                 .log("last")
-                 ,
-
-                 newCanvas("gebildetCanvas", 1000, 70)
-                 .add(0,0, getScale("gebildet"))
-                 .print()
-                 ,
-
-                 newScale("formell", 6)
-                 .button()
-                 .radio()
-                 .before(newText("formelltext1", "gar nicht formell").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-                 .after(newText("formelltext1", "sehr formell"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-                 .labelsPosition("top")
-                 .log("last")
-                 ,
-
-                 newCanvas("formellCanvas", 1000, 70)
-                 .add(0,0, getScale("formell"))
-                 .print()
-                 ,
-
-                 newSelector("shuffle") // shuffle the positions of the scales
-                 .add(getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("formellCanvas"))
-                 .shuffle()
-                 .disableClicks()
-                 ,
-
-                 newCanvas("space", 1, 50)
-                 .print()
-
-                 ,
-
-                 //newText("faster", "Bitte schneller bewerten!")
-                 //,
-
-                 //newTimer("timeout", 60000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
-                 //.start()
-                 //.log()
-                 //.callback(getCanvas("canvas")
-                  //        .remove()
-                  //        ,
-                  //        getCanvas("pingeligCanvas")
-                  //        .remove()
-                  //        ,
-                  //        getCanvas("gebildetCanvas")
-                  //        .remove()
-                  //        ,
-                  //        getCanvas("formellCanvas")
-                  //        .remove()
-                  //        ,
-                  //      )
-                 //.callback(getText("faster").print())
-                 //,
-
-                 newButton("weiter", "next")
-                 .settings.center()
-                 .settings.css("font-size", "20px")
-                 .log()
-                 .print()
-                 .wait(//getTimer("timeout").test.ended()
-                      //.or(getScale("pingelig").test.selected()
-                      //.and(getScale("gebildet").test.selected()
-                      //.and(getScale("formell").test.selected()
-                      //)
-                      //)
-                      )
-               )// cannot click weiter until all scales are selected or when the timer ended
-               //.callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
-               ,
+    PennController("practice",
 
 
-        )
+             newText("sentence", variable.Sentence)
+             .settings.css("font-size", "18px")
 
-        //.setOption("hideProgressBar", "true" )
-        .log( "gender"               , getVar("gender")         )
-        .log( "age"                  , getVar("age")            )
-        .log( "language"             , getVar("language")       )
-        //.log("education"            , getVar("education"))
-        .log( "browser"              , getVar("browser")        )
-        .log("itemnr"                , variable.item_nr       )
-        .log( "condition"            , variable.cond       )
-        .log( "conddrop"            , variable.cond_drop       )
-        .log("condarg"              , variable.cond_pron    )
-        .log("obj"                   ,variable.obj)
-        .log("objgen"                  , variable.obj_gen )
-        .log("mod"                 , variable.mod )
-        .log("v"                    ,variable.v)
-        .log("block"                    ,variable.block)
-        )
-        ;
+             ,
 
+             newText("extraction", variable.Entity)
+             .settings.css("font-size", "18px")
+
+             ,
+
+             newCanvas("canvas", 1000, 100)
+             .add(0, 0, getText("sentence"))
+             .add(0, 40, getText("extraction"))
+             .print()
+
+             ,
+
+             newText("q1", "Does the expression match the job description in the sentence?")
+             ,
+
+             newCanvas("q1Canvas", 1000, 30)
+             .add(0, 0, getText("q1"))
+             .print()
+             ,
+
+             newText("ans1", "Yes")
+             //.settings.center()
+             .settings.after(newText("no", "No").settings.css("padding-left", "50pt").settings.css("font-size", "medium"))
+             .settings.css("font-size", "medium")
+             .print()
+             ,
+
+             newSelector("select1")
+             .settings.add(getText("ans1"), getText("no"))
+             .log("last")
+             ,
+
+             newText("q2", "What is the gender of the job description?")
+             ,
+
+             newCanvas("q2Canvas", 1000, 60)
+             .add(0, 30, getText("q2"))
+             .print()
+             ,
+
+             newText("ans2", "Female")
+             //.settings.center()
+             .settings.after(newText("m", "Male")
+                            .settings.css("padding-left", "50pt")
+                            .settings.css("font-size", "medium")
+                            .after(newText("n", "Neutral")
+                                  .css("padding-left", "50pt")
+                                  .after(newText("idk", "I don't know")
+                                        .css("padding-left", "50pt")
+                                        )
+                                  )
+                            )
+             .settings.css("font-size", "medium")
+             .print()
+             ,
+
+             newSelector("select2")
+             .settings.add(getText("ans2"), getText("m"), getText("n"), getText("idk"))
+             .log("last")
+             ,
+
+             newText("q3", "Does the sentence make sense?")
+             ,
+
+             newCanvas("q3Canvas", 1000, 60)
+             .add(0, 30, getText("q3"))
+             .print()
+             ,
+
+             newText("ans3", "Yes")
+             //.settings.center()
+             .settings.after(newText("no3", "No")
+                            .settings.css("padding-left", "50pt")
+                            .settings.css("font-size", "medium")
+                            .after(newText("ns", "Not sure")
+                                        .css("padding-left", "50pt")
+                                  )
+                            )
+             .settings.css("font-size", "medium")
+             .print()
+             ,
+
+             newSelector("select3")
+             .settings.add(getText("ans3"), getText("no3"), getText("ns"))
+             .log("last")
+             ,
+
+             newCanvas("space", 1, 50)
+             .print()
+
+             ,
+
+             //newText("faster", "Please be faster!")
+             //,
+
+             //newTimer("timeout", 60000) // a timeout so that when it runs out, the canvases are removed and the faster message appears
+             //.start()
+             //.log()
+             //.callback(getText("faster").print())
+             //,
+
+             newButton("weiter", "next")
+             .settings.center()
+             .settings.css("font-size", "20px")
+             .log()
+             .print()
+             .wait(//getTimer("timeout").test.ended()
+                  //.or(
+                  getSelector("select1").test.selected()
+                  .and(getSelecter("select2").test.selected())
+                  .and(getSelector("select3").test.selected())
+                  //)
+                  )
+           // cannot click weiter until all scales are selected or when the timer ended
+           //.callback(getTimer("timeout").stop()) // if the weiter button is clicked before the timer runs out, stop the timer
+           ,
+
+
+    )
+
+    //.setOption("hideProgressBar", "true" )
+    .log( "gender"               , getVar("gender")         )
+    .log( "age"                  , getVar("age")            )
+    .log( "language"             , getVar("language")       )
+    //.log("education"            , getVar("education"))
+    .log( "browser"              , getVar("browser")        )
+    .log("index"                , variable.Index       )
+    .log( "extraction"            , variable.Entity       )
+    .log( "sentence"            , variable.Sentence       )
+    )
+    ;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// completion screen
 
