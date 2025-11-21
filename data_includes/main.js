@@ -4,7 +4,7 @@ PennController.DebugOff()
 // change the tedxt on the progress bar
 var progressBarText = "progress";
 
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice1_start1")//, randomize("practice1"), "block1_start1", randomize("fillers1"), "send", "end" )
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice")//, "exp_start", randomize("exp"), "send", "end" )
 
 
 
@@ -300,79 +300,46 @@ PennController("practice_start",
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Practice
 
 
-PennController.Template("uebung1.csv", variable =>
+PennController.Template("practice.csv", variable =>
 
     PennController("practice",
 
 
-             newText("sa", variable.sa)
+             newText("sentence", variable.Sentence)
              .settings.css("font-size", "18px")
 
              ,
 
-             newText("sb", variable.sb)
+             newText("extraction", variable.Entity)
              .settings.css("font-size", "18px")
 
-             ,
-
-             newText("frage", "Inwieweit w&uuml;rdest du <b>Person B</b> die folgenden Eigenschaften zuschreiben?")
-             //.settings.css("font-size", "18px")
              ,
 
              newCanvas("canvas", 1000, 130)
-             .add(0, 0, getText("sa"))
-             .add(0, 20, getText("sb"))
-             .add(0, 80, getText("frage"))
+             .add(0, 0, getText("sentence"))
+             .add(0, 20, getText("extraction"))
              .print()
 
              ,
 
-             newScale("pingelig", 6)
-             .button()
-             .radio()
-             .before(newText("pingeligtext1", "gar nicht pingelig").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("pingeligtext1", "sehr pingelig"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsPosition("top")
+             newText("yes", "<small>Yes</small>")
+             .settings.center()
+             .settings.after(newText("no", "<small>No</small>").settings.css("padding-left", "100pt").settings.css("font-size", "medium")))
+             .settings.css("padding-left", "100pt").settings.css("font-size", "medium"))
+             ,
+
+             newText("q1", "Does the expression match the job description in the sentence?")
+             ,
+
+             newSelector("select1")
+             .settings.add(getText("Yes"), getText("No"))
              .log("last")
              ,
 
-             newCanvas("pingeligCanvas", 1000, 70)
-             .add(0,0, getScale("pingelig"))
+             newCanvas("q1Canvas", 1000, 70)
+             .add(0,0, getText("q1"))
+             .add(0, 20, getSelecter("select1"))
              .print()
-             ,
-
-             newScale("gebildet", 6)
-             .button()
-             .radio()
-             .before(newText("gebildettext1", "gar nicht gebildet").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("gebildettext1", "sehr gebildet"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsPosition("top")
-             .log("last")
-             ,
-
-             newCanvas("gebildetCanvas", 1000, 70)
-             .add(0,0, getScale("gebildet"))
-             .print()
-             ,
-
-             newScale("formell", 6)
-             .button()
-             .radio()
-             .before(newText("formelltext1", "gar nicht formell").cssContainer({width: "15em", "text-align": "right"}))//.cssContainer({height:'100%',display:'flex','flex-direction':'column', width: "15em", "text-align": "right"}).css("margin-top","auto"))
-             .after(newText("formelltext1", "sehr formell"))//.cssContainer({height:'100%',display:'flex','flex-direction':'column'}).css("margin-top","auto"))
-             .labelsPosition("top")
-             .log("last")
-             ,
-
-             newCanvas("formellCanvas", 1000, 70)
-             .add(0,0, getScale("formell"))
-             .print()
-             ,
-
-             newSelector("shuffle") // shuffle the positions of the scales
-             .add(getCanvas("pingeligCanvas"), getCanvas("gebildetCanvas"), getCanvas("formellCanvas"))
-             .shuffle()
-             .disableClicks()
              ,
 
              newCanvas("space", 1, 50)
@@ -395,10 +362,8 @@ PennController.Template("uebung1.csv", variable =>
              .log()
              .print()
              .wait(//getTimer("timeout").test.ended()
-                  //.or(getScale("pingelig").test.selected()
-                  //.and(getScale("gebildet").test.selected()
-                  //.and(getScale("formell").test.selected()
-                  //)
+                  //.or(
+                  getSelector("select1").test.selected()
                   //)
                   )
            )// cannot click weiter until all scales are selected or when the timer ended
@@ -414,9 +379,9 @@ PennController.Template("uebung1.csv", variable =>
     .log( "language"             , getVar("language")       )
     //.log("education"            , getVar("education"))
     .log( "browser"              , getVar("browser")        )
-    .log("uebungnr"                , variable.uebung_nr       )
-    .log( "condition"            , variable.cond       )
-    .log( "control"            , variable.control       )
+    .log("index"                , variable.Index       )
+    .log( "extraction"            , variable.Entity       )
+    .log( "sentence"            , variable.Sentence       )
     )
     ;
 
