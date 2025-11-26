@@ -681,6 +681,7 @@ PennController("payment",
     ,
 
     newButton("weiter", "next")
+    .print()
      .wait()
 
 )
