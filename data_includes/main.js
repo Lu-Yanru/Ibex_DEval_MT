@@ -54,7 +54,7 @@ PennController("PersonalData",
 
                ,
 
-               newText("EnterData2", "<b>Please answer all the questions before clicking on <i>next</i>. Otherwise the survey will be stopped!</b>")
+               newText("EnterData2", "<b>Please answer all the questions before clicking on <i>next</i>. Otherwise the survey will be stopped, and you will need to reload the page!</b>")
                .settings.css("font-size", "18px")
                .print()
 
@@ -358,7 +358,11 @@ PennController.Template("practice.csv", variable =>
 
              newText("yes1", "Yes")
              //.settings.center()
-             .settings.after(newText("no1", "No").settings.css("padding-left", "50pt").settings.css("font-size", "medium"))
+             .settings.after(newText("no1", "No").settings.css("padding-left", "50pt").settings.css("font-size", "medium")
+                            .after(newText("idk1", "I don't know")
+                                  .css("padding-left", "50pt").settings.css("font-size", "medium")
+                            )
+                            )
              .settings.css("font-size", "medium")
              .print()
              ,
@@ -529,7 +533,11 @@ PennController("exp_start",
 
              newText("yes1", "Yes")
              //.settings.center()
-             .settings.after(newText("no1", "No").settings.css("padding-left", "50pt").settings.css("font-size", "medium"))
+             .settings.after(newText("no1", "No").settings.css("padding-left", "50pt").settings.css("font-size", "medium")
+                          .after(newText("idk1", "I don't know")
+                          .css("padding-left", "50pt").settings.css("font-size", "medium")
+                            )
+                            )
              .settings.css("font-size", "medium")
              .print()
              ,
