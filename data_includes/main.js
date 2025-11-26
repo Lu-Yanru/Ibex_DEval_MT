@@ -102,7 +102,7 @@ PennController("PersonalData",
 
                newDropDown("gender", "")
                .settings.log()
-               .add( "female" , "male" , "divers", "not specified" )
+               .add( "female" , "male" , "diverse", "not specified" )
 
                ,
 
