@@ -81,7 +81,7 @@ PennController("PersonalData",
                //,
 
                newTextInput("language", "")
-               .settings.log()
+               .settings.log("last")
                .lines(0)
                .size(300, 50)
                //.add( "Deutsch" , "Deutsch und andere Sprache(n) vor dem 5. Lebensjahr" , "andere" )
@@ -120,7 +120,7 @@ PennController("PersonalData",
 
 
                newTextInput("age", "")
-               .settings.log()
+               .settings.log("last")
                .size(300, 20)
                ,
 
@@ -368,7 +368,7 @@ PennController.Template("practice.csv", variable =>
              ,
 
              newSelector("match")
-             .settings.add(getText("yes1"), getText("no1"))
+             .settings.add(getText("yes1"), getText("no1"), getText("idk1"))
              .log("last")
              ,
 
@@ -543,7 +543,7 @@ PennController("exp_start",
              ,
 
              newSelector("match")
-             .settings.add(getText("yes1"), getText("no1"))
+             .settings.add(getText("yes1"), getText("no1"), getText("idk1"))
              .log("last")
              ,
 
@@ -658,7 +658,7 @@ PennController("payment",
     .print()
     ,
     newTextInput("paypal", "")
-    .settings.log()
+    .settings.log("last")
     .size(300, 20)
     ,
 
@@ -686,6 +686,9 @@ PennController("payment",
     ,
 
     newButton("weiter", "next")
+    .settings.center()
+    .settings.css("font-size", "20px")
+    .log()
     .print()
      .wait()
 
