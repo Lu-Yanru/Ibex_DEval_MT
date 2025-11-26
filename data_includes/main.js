@@ -669,7 +669,7 @@ PennController("payment",
 
     newCanvas("paypalcanvas", 600, 35)
     .add(0, 20, getText("paypaltext"))
-    .add(350, 23, getTextInput("paypal"))
+    .add(100, 23, getTextInput("paypal"))
     .print()
 
     ,
