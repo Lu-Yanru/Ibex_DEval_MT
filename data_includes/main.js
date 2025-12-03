@@ -654,7 +654,7 @@ PennController.SendResults("send");
 
 PennController("payment",
 
-    newText("If you want to receive the payment digitally, please enter your Paypal or bank details (SEPA only) below. We will store this information in a separate file.")
+    newHtml("paymentinstruct", "payment_top.html")
     .print()
     ,
     newTextInput("paypal", "")
@@ -743,17 +743,8 @@ PennController("payment",
 
     ,
 
-    newCanvas("space", 1, 155)
-    .print()
-
-    ,
-
     newHtml("reciept", "payment.html")
     .print()
-    ,
-    newCanvas("space", 1, 155)
-    .print()
-
     ,
 
     newButton("weiter", "next")
