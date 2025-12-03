@@ -667,13 +667,13 @@ PennController("payment",
 
     ,
 
-    newCanvas("paypalcanvas", 600, 35)
-    .add(0, 20, getText("paypaltext"))
-    .add(100, 23, getTextInput("paypal"))
+    newCanvas("paypalcanvas", 600, 20)
+    .add(140, 0, getText("paypaltext"))
+    .add(450, 3, getTextInput("paypal"))
     .print()
 
     ,
-    newText("banktext", "Bank transfer:")
+    newText("banktext", "SEPA transfer:")
     .settings.css("font-size", "18px")
 
     ,
@@ -698,29 +698,12 @@ PennController("payment",
 
     ,
 
-    newCanvas("bankcanvas", 600, 50)
-    .add(0, 20, getText("banktext"))
-    .add(100, 23, getText("accountnametext"))
-    .add(200, 23, getTextInput("accountname"))
-    .add(100, 26, getText("ibantext"))
-    .add(200, 23, getTextInput("iban"))
-    .print()
-
-    ,
-
-    newTextInput("bank", "")
-    .settings.log("last")
-    .size(300, 20)
-    ,
-
-    newText("banktext", "Bank transfer:")
-    .settings.css("font-size", "18px")
-
-    ,
-
-    newCanvas("bankcanvas", 600, 35)
-    .add(0, 20, getText("banktext"))
-    .add(100, 23, getTextInput("paypal"))
+    newCanvas("bankcanvas", 600, 100)
+    .add(140, 20, getText("banktext"))
+    .add(280, 20, getText("accountnametext"))
+    .add(450, 23, getTextInput("accountname"))
+    .add(280, 50, getText("ibantext"))
+    .add(450, 53, getTextInput("iban"))
     .print()
 
     ,
