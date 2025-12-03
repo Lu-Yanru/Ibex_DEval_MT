@@ -4,7 +4,7 @@ PennController.DebugOff()
 // change the tedxt on the progress bar
 var progressBarText = "progress";
 
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice", "exp_start", randomize("exp"), "payment", "send", "end")
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice", "exp_start", randomize("exp"), "send", "end")
 
 
 
@@ -43,7 +43,7 @@ PennController("PersonalData",
 
 
 
-               newText("EnterData", "First, a few details about yourself!")
+               newText("EnterData", "Please share a few details about yourself before continuing. This is collected for research purposes only.")
                .settings.css("font-size", "large")
                .print()
 
