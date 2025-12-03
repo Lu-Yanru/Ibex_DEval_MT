@@ -4,7 +4,7 @@ PennController.DebugOff()
 // change the tedxt on the progress bar
 var progressBarText = "progress";
 
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice", "exp_start", randomize("exp"), "send", "end")
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice", "exp_start", randomize("exp"), "payment", "send", "end")
 
 
 
@@ -654,7 +654,7 @@ PennController.SendResults("send");
 
 PennController("payment",
 
-    newText("Please enter your Paypal to receive the payment. We will store this information in a separate file.")
+    newText("If you want to receive the payment digitally, please enter your Paypal or bank details (SEPA only) below. We will store this information in a separate file.")
     .print()
     ,
     newTextInput("paypal", "")
@@ -673,6 +673,57 @@ PennController("payment",
     .print()
 
     ,
+    newText("banktext", "Bank transfer:")
+    .settings.css("font-size", "18px")
+
+    ,
+
+    newTextInput("accountname", "")
+    .settings.log("last")
+    .size(300, 20)
+    ,
+
+    newText("accountnametext", "Account owner:")
+    .settings.css("font-size", "18px")
+
+    ,
+
+    newTextInput("iban", "")
+    .settings.log("last")
+    .size(300, 20)
+    ,
+
+    newText("ibantext", "IBAN:")
+    .settings.css("font-size", "18px")
+
+    ,
+
+    newCanvas("bankcanvas", 600, 50)
+    .add(0, 20, getText("banktext"))
+    .add(100, 23, getText("accountnametext"))
+    .add(200, 23, getTextInput("accountname"))
+    .add(100, 26, getText("ibantext"))
+    .add(200, 23, getTextInput("iban"))
+    .print()
+
+    ,
+
+    newTextInput("bank", "")
+    .settings.log("last")
+    .size(300, 20)
+    ,
+
+    newText("banktext", "Bank transfer:")
+    .settings.css("font-size", "18px")
+
+    ,
+
+    newCanvas("bankcanvas", 600, 35)
+    .add(0, 20, getText("banktext"))
+    .add(100, 23, getTextInput("paypal"))
+    .print()
+
+    ,
 
     newVar("paypal")
     .settings.global()
@@ -680,6 +731,26 @@ PennController("payment",
 
     ,
 
+    newVar("accountname")
+    .settings.global()
+    .set( getTextInput("accountname") )
+
+    ,
+
+    newVar("iban")
+    .settings.global()
+    .set( getTextInput("iban") )
+
+    ,
+
+    newCanvas("space", 1, 155)
+    .print()
+
+    ,
+
+    newHtml("reciept", "payment.html")
+    .print()
+    ,
     newCanvas("space", 1, 155)
     .print()
 
@@ -694,6 +765,8 @@ PennController("payment",
 
 )
 .log( "paypal" ,   getVar("paypal"))
+.log( "accountname", getVar("accountname"))
+.log( "iban",      getVar("iban"))
 ;
 
 PennController("end",
