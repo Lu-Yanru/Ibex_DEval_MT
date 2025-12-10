@@ -372,7 +372,7 @@ PennController.Template("practice.csv", variable =>
              .log("last")
              ,
 
-             newText("q2", "What is the gender of <b>the job description</b>?")
+             newText("q2", "What is the gender of <b>the job description</b> in the sentence?")
              ,
 
              newCanvas("q2Canvas", 1000, 60)
@@ -548,7 +548,7 @@ PennController("exp_start",
              .log("last")
              ,
 
-             newText("q2", "What is the gender of the job description?")
+             newText("q2", "What is the gender of the job description in the sentence?")
              ,
 
              newCanvas("q2Canvas", 1000, 60)
