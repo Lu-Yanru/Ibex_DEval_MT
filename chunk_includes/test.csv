@@ -1,3 +1,3 @@
-Index,Entity,Sentence
-2743,el jefe,El jefe le explicó la situación a la maestra y se sintió comprendida por ella.
-440,el guardia,El guardia nunca habló con el contador porque ella nunca patrulló el interior.
+Index,Translator,Entity,Sentence
+2743,GoogleTranslate,The expression: el jefe,The sentence: El jefe le explicó la situación a la maestra y se sintió comprendida por ella.
+440,GoogleTranslate,The expression: el guardia,The sentence: El guardia nunca habló con el contador porque ella nunca patrulló el interior.
