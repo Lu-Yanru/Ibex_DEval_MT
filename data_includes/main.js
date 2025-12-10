@@ -348,7 +348,7 @@ PennController.Template("practice.csv", variable =>
 
              ,
 
-             newText("q1", "Does the expression match the job description in the sentence?")
+             newText("q1", "Does <b>the expression</b> match <b>the job description</b> in the sentence?")
              ,
 
              newCanvas("q1Canvas", 1000, 30)
@@ -372,7 +372,7 @@ PennController.Template("practice.csv", variable =>
              .log("last")
              ,
 
-             newText("q2", "What is the gender of the job description?")
+             newText("q2", "What is the gender of <b>the job description</b>?")
              ,
 
              newCanvas("q2Canvas", 1000, 60)
