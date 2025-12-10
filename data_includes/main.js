@@ -4,7 +4,7 @@ PennController.DebugOff()
 // change the tedxt on the progress bar
 var progressBarText = "progress";
 
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice", "exp_start", randomize("exp"), "payment", "send", "end")
+PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice", "exp_start", randomize("exp"), "payment2", "send", "end")
 
 
 
@@ -741,6 +741,26 @@ PennController("payment",
 .log( "paypal" ,   getVar("paypal"))
 .log( "accountname", getVar("accountname"))
 .log( "iban",      getVar("iban"))
+;
+
+PennController("payment2",
+
+    newHtml("reciept", "payment2.html")
+    .print()
+    ,
+
+    newCanvas("space1", 1, 160)
+    .print()
+
+    ,
+    newButton("weiter", "next")
+    .settings.center()
+    .settings.css("font-size", "20px")
+    .log()
+    .print()
+     .wait()
+
+)
 ;
 
 PennController("end",
