@@ -4,7 +4,7 @@ PennController.DebugOff()
 // change the tedxt on the progress bar
 var progressBarText = "progress";
 
-PennController.Sequence("init", "intro", "PersonalData", "practice_start", "practice", "exp_start", randomize("exp"), "payment2", "send", "end")
+PennController.Sequence("init", "intro", "einwilligung", "PersonalData", "practice_start", "practice", "exp_start", randomize("exp"), "payment2", "send", "end")
 
 
 
@@ -35,6 +35,30 @@ PennController("intro",
 
     //.setOption("hideProgressBar", "true")
     ;
+
+PennController("einwilligung",
+
+                 newHtml("einwilligung", "einwilligung.html")
+                 .print()
+
+                 ,
+
+                 //newCanvas("space1", 1, 125)
+                 //.print()
+
+                 //,
+
+                 newButton("weiter", "next")
+                 .center()
+                 .settings.css("font-size", "20px")
+                 .print()
+                 .wait()
+
+
+        )
+
+        //.setOption("hideProgressBar", "true")
+        ;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// demographic info
 
@@ -502,7 +526,7 @@ PennController("exp_start",
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Main
 
-    PennController.Template("test.csv", variable =>
+PennController.Template("test.csv", variable =>
 
     PennController("exp",
 
