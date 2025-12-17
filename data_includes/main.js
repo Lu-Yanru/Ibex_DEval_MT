@@ -4,7 +4,7 @@ PennController.DebugOff()
 // change the tedxt on the progress bar
 var progressBarText = "progress";
 
-PennController.Sequence("init", "intro", "PersonalData", "hinweise", "practice_start", "practice", "exp_start", randomize("exp"), "payment2", "send", "end")
+PennController.Sequence("init", "intro", "PersonalData", "practice_start", "practice", "exp_start", randomize("exp"), "payment2", "send", "end")
 
 
 
