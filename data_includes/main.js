@@ -779,10 +779,6 @@ PennController("payment2",
     .print()
     ,
 
-    newCanvas("space1", 1, 50)
-    .print()
-
-    ,
     newHtml("digital_instruc", "payment2_top.html")
     .print()
     ,
