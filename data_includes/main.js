@@ -398,6 +398,7 @@ PennController.Template("practice.csv", variable =>
              newSelector("match")
              .settings.add(getText("yes1"), getText("no1"), getText("idk1"))
              .log("last")
+             .frame("dashed 2px blue")
              ,
 
              newText("q2", "What is the gender of <b>the job description</b> in the sentence?")
@@ -427,6 +428,7 @@ PennController.Template("practice.csv", variable =>
              newSelector("gender")
              .settings.add(getText("f"), getText("m"), getText("n"), getText("idk"))
              .log("last")
+             .frame("dashed 2px blue")
              ,
 
              newText("q3", "Does the sentence make sense?")
@@ -453,6 +455,7 @@ PennController.Template("practice.csv", variable =>
              newSelector("makesense")
              .settings.add(getText("yes3"), getText("no3"), getText("notsure"))
              .log("last")
+             .frame("dashed 2px blue")
              ,
 
              newCanvas("space", 1, 50)
@@ -574,6 +577,7 @@ PennController.Template("test.csv", variable =>
              newSelector("match")
              .settings.add(getText("yes1"), getText("no1"), getText("idk1"))
              .log("last")
+             .frame("dashed 2px blue")
              ,
 
              newText("q2", "What is the gender of the job description in the sentence?")
@@ -603,6 +607,7 @@ PennController.Template("test.csv", variable =>
              newSelector("gender")
              .settings.add(getText("f"), getText("m"), getText("n"), getText("idk"))
              .log("last")
+             .frame("dashed 2px blue")
              ,
 
              newText("q3", "Does the sentence make sense?")
@@ -629,6 +634,7 @@ PennController.Template("test.csv", variable =>
              newSelector("makesense")
              .settings.add(getText("yes3"), getText("no3"), getText("notsure"))
              .log("last")
+             .frame("dashed 2px blue")
              ,
 
              newCanvas("space", 1, 50)
