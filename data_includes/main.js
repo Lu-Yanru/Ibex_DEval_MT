@@ -803,7 +803,7 @@ PennController("payment2",
     .set( getTextInput("id") )
 
     ,
-    newCanvas("space1", 1, 50)
+    newCanvas("space1", 1, 20)
     .print()
 
     ,
