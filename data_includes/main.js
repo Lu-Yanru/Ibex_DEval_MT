@@ -78,7 +78,7 @@ PennController("PersonalData",
 
                ,
 
-               newText("EnterData2", "<b>Please answer all the questions before clicking on <i>next</i>. Otherwise the survey will be stopped, and you will need to reload the page!</b>")
+               newText("EnterData2", "<b>Please answer all the questions before clicking on <i>next</i>. Otherwise the survey will be stopped, and you cannot participate in this survey anymore.</b>")
                .settings.css("font-size", "18px")
                .print()
 
@@ -104,22 +104,22 @@ PennController("PersonalData",
                //.print()
                //,
 
-               newTextInput("language", "")
+               newDropDown("language", "")
                .settings.log("last")
-               .lines(0)
-               .size(300, 50)
-               //.add( "Deutsch" , "Deutsch und andere Sprache(n) vor dem 5. Lebensjahr" , "andere" )
+               //.lines(0)
+               //.size(300, 50)
+               .add( "A1" , "A2" , "B1", "B2", "C1", "C2" )
 
                ,
 
-               newText("languagetext", "Languages you speak fluently:")
+               newText("languagetext", "Your Spanish level:")
                .settings.css("font-size", "18px")
                ,
 
 
                newCanvas("languagecanvas", 600, 70)
                .add(0, 20, getText("languagetext"))
-               .add(350, 23, getTextInput("language"))
+               .add(350, 23, getDropDown("language"))
                .print()
 
                ,
@@ -143,9 +143,10 @@ PennController("PersonalData",
                ,
 
 
-               newTextInput("age", "")
+               newDropDown("age", "")
                .settings.log("last")
-               .size(300, 20)
+               //.size(300, 20)
+               .add("Below 18", "18 or above")
                ,
 
                newText("agetext", "Age:")
@@ -155,7 +156,7 @@ PennController("PersonalData",
 
                newCanvas("agecanvas", 600, 35)
                .add(0, 20, getText("agetext"))
-               .add(350, 23, getTextInput("age"))
+               .add(350, 23, getDropDown("age"))
                .print()
 
                ,
@@ -180,23 +181,23 @@ PennController("PersonalData",
                //.print()
                //,
 
-               newDropDown("browser", "")
-               .settings.log("last")
-               .add( "Safari" , "Firefox" , "Chrome", "Internet Explorer", "Microsoft Edge", "anderer" )
+               //newDropDown("browser", "")
+               //.settings.log("last")
+               //.add( "Safari" , "Firefox" , "Chrome", "Internet Explorer", "Microsoft Edge", "anderer" )
 
-               ,
+               //,
 
-               newText("browsertext", "Browser used:")
-               .settings.css("font-size", "18px")
+               //newText("browsertext", "Browser used:")
+               //.settings.css("font-size", "18px")
 
-               ,
+               //,
 
-               newCanvas("browsercanvas", 600, 35)
-               .add(0, 20, getText("browsertext"))
-               .add(350, 23, getDropDown("browser"))
-               .print()
+               //newCanvas("browsercanvas", 600, 35)
+               //.add(0, 20, getText("browsertext"))
+               //.add(350, 23, getDropDown("browser"))
+               //.print()
 
-               ,
+               //,
 
                newCanvas("space3", 1, 155)
                .print()
@@ -207,8 +208,8 @@ PennController("PersonalData",
                .settings.center()
                .settings.css("font-size", "20px")
                .print()
-               .wait(getTextInput("age")
-                     .test.text(/^\d+$/) // matches a string with only digits
+               .wait(getDropDown("age")
+                     .testNot.selected("Below 18")
                      // ende age input
 
                     .and(getDropDown("gender")
@@ -216,8 +217,11 @@ PennController("PersonalData",
                     ) //ende gender scale
 
 
-                     .and(getTextInput("language")
-                       .test.text(/[A-Za-z]+/) // matches a string with at least one alphabet
+                     .and(getDropDown("language")
+                       .testNot.selected("A1")
+                       .and(getDropDown("language")
+                       .testNot.selected("A2")
+                        )
                           ) //ende language scale
 
                       //.and(getTextInput("id")
@@ -228,9 +232,9 @@ PennController("PersonalData",
                     //   .test.selected()
                     //    ) //ende education scale
 
-                      .and(getDropDown("browser")
-                        .test.selected()
-                           ) //ende browser scale
+                      //.and(getDropDown("browser")
+                      //  .test.selected()
+                      //     ) //ende browser scale
 
 
                      .success()
@@ -262,13 +266,13 @@ PennController("PersonalData",
 
                newVar("age")
                .settings.global()
-               .set( getTextInput("age") )
+               .set( getDropDown("age") )
 
                ,
 
                newVar("language")
                .settings.global()
-               .set( getTextInput("language") )
+               .set( getDropDown("language") )
 
                ,
 
@@ -277,9 +281,9 @@ PennController("PersonalData",
                //.set(getDropDown("education"))
                //,
 
-               newVar("browser")
-               .settings.global()
-               .set( getDropDown("browser") )
+               //newVar("browser")
+               //.settings.global()
+               //.set( getDropDown("browser") )
 
      )
 
@@ -289,7 +293,7 @@ PennController("PersonalData",
     .log( "age" ,      getVar("age"))
     .log( "language" , getVar("language"))
     //.log("education", getVar("education"))
-    .log( "browser" ,  getVar("browser"))
+    //.log( "browser" ,  getVar("browser"))
 
 
     ;
@@ -487,10 +491,10 @@ PennController.Template("practice.csv", variable =>
     //.setOption("hideProgressBar", "true" )
     //.log("id",         getVar("id"))
     .log( "gender"               , getVar("gender")         )
-    .log( "age"                  , getVar("age")            )
+    //.log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
     //.log("education"            , getVar("education"))
-    .log( "browser"              , getVar("browser")        )
+    //.log( "browser"              , getVar("browser")        )
     .log("index"                , variable.Index       )
     .log("translator"           , variable.Translator)
     .log( "extraction"            , variable.Entity       )
@@ -663,10 +667,10 @@ PennController.Template("test.csv", variable =>
     //.setOption("hideProgressBar", "true" )
     //.log("id",         getVar("id"))
     .log( "gender"               , getVar("gender")         )
-    .log( "age"                  , getVar("age")            )
+    //.log( "age"                  , getVar("age")            )
     .log( "language"             , getVar("language")       )
     //.log("education"            , getVar("education"))
-    .log( "browser"              , getVar("browser")        )
+    //.log( "browser"              , getVar("browser")        )
     .log("index"                , variable.Index       )
     .log("translator"           , variable.Translator)
     .log( "extraction"            , variable.Entity       )
@@ -771,10 +775,41 @@ PennController("payment",
 
 PennController("payment2",
 
-    newHtml("reciept", "payment2.html")
+    newHtml("cash", "payment_top.html")
     .print()
     ,
 
+    newCanvas("space1", 1, 160)
+    .print()
+
+    ,
+    newHtml("digital_instruc", "payment2_top.html")
+    .print()
+    ,
+    newTextInput("id", "")
+    .settings.log("last")
+    .size(300, 20)
+    ,
+
+    newText("idtext", "Survey ID:")
+    .settings.css("font-size", "18px")
+
+    ,
+
+    newCanvas("idcanvas", 600, 20)
+    .add(140, 0, getText("idtext"))
+    .add(450, 3, getTextInput("id"))
+    .print()
+
+    ,
+    newVar("id")
+    .settings.global()
+    .set( getTextInput("id") )
+
+    ,
+    newHtml("reciept", "payment2.html")
+    .print()
+    ,
     newCanvas("space1", 1, 160)
     .print()
 
@@ -787,6 +822,7 @@ PennController("payment2",
      .wait()
 
 )
+.log("id", getVar("id"))
 ;
 
 PennController("end",
