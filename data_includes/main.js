@@ -117,9 +117,9 @@ PennController("PersonalData",
                ,
 
 
-               newCanvas("languagecanvas", 600, 70)
+               newCanvas("languagecanvas", 600, 35)
                .add(0, 20, getText("languagetext"))
-               .add(350, 23, getDropDown("language"))
+               .add(250, 23, getDropDown("language"))
                .print()
 
                ,
@@ -137,7 +137,7 @@ PennController("PersonalData",
 
                newCanvas("gendercanvas", 600, 35)
                .add(0, 20, getText("gendertext"))
-               .add(350, 23, getDropDown("gender"))
+               .add(250, 23, getDropDown("gender"))
                .print()
 
                ,
@@ -156,7 +156,7 @@ PennController("PersonalData",
 
                newCanvas("agecanvas", 600, 35)
                .add(0, 20, getText("agetext"))
-               .add(350, 23, getDropDown("age"))
+               .add(250, 23, getDropDown("age"))
                .print()
 
                ,
@@ -779,7 +779,7 @@ PennController("payment2",
     .print()
     ,
 
-    newCanvas("space1", 1, 160)
+    newCanvas("space1", 1, 50)
     .print()
 
     ,
@@ -798,7 +798,7 @@ PennController("payment2",
 
     newCanvas("idcanvas", 600, 20)
     .add(140, 0, getText("idtext"))
-    .add(450, 3, getTextInput("id"))
+    .add(250, 3, getTextInput("id"))
     .print()
 
     ,
@@ -807,10 +807,14 @@ PennController("payment2",
     .set( getTextInput("id") )
 
     ,
+    newCanvas("space1", 1, 50)
+    .print()
+
+    ,
     newHtml("reciept", "payment2.html")
     .print()
     ,
-    newCanvas("space1", 1, 160)
+    newCanvas("space1", 1, 100)
     .print()
 
     ,
