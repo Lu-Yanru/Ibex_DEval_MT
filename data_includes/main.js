@@ -125,7 +125,7 @@ PennController("PersonalData",
                ,
 
                newDropDown("gender", "")
-               .settings.log()
+               .settings.log("last")
                .add( "female" , "male" , "diverse", "not specified" )
 
                ,
@@ -783,7 +783,7 @@ PennController("payment2",
     .print()
     ,
     newTextInput("id", "")
-    .settings.log("last")
+    .settings.log()
     .size(300, 20)
     ,
 
@@ -807,7 +807,7 @@ PennController("payment2",
     .print()
 
     ,
-    newHtml("reciept", "payment2.html")
+    newHtml("receipt", "payment2.html")
     .print()
     ,
     newCanvas("space1", 1, 100)
