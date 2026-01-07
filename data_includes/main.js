@@ -108,7 +108,7 @@ PennController("PersonalData",
                .settings.log("last")
                //.lines(0)
                //.size(300, 50)
-               .add( "A1" , "A2" , "B1", "B2", "C1", "C2" )
+               .add( "Below B1", "B1", "B2", "C1", "C2" )
 
                ,
 
@@ -218,9 +218,7 @@ PennController("PersonalData",
 
 
                      .and(getDropDown("language")
-                       .testNot.selected("A1")
-                       .and(getDropDown("language")
-                       .testNot.selected("A2")
+                       .testNot.selected("Below B1")
                         )
                           ) //ende language scale
 
