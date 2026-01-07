@@ -455,11 +455,31 @@ PennController.Template("practice.csv", variable =>
              .frame("dashed 2px blue")
              ,
 
+             newTextInput("comment", "")
+             .log()
+             .lines(0)
+             .size(300, 50)
+             ,
+
+             newText("commenttext", "Comment (optional):")
+             .css("font-size", "18px")
+             ,
+
+             newCanvas("commentcanvas", 600, 70)
+             .add(0, 20, getText("commenttext"))
+             .add(0, 40, getTextInput("id"))
+             .print()
+             ,
+
              newCanvas("space", 1, 50)
              .print()
 
              ,
 
+             newText("tip", "You need to answer all questions before clicking on <i>next</i>!")
+             .css("font-size", "14px")
+             .print()
+             ,
              //newText("faster", "Please be faster!")
              //,
 
@@ -634,9 +654,30 @@ PennController.Template("test.csv", variable =>
              .frame("dashed 2px blue")
              ,
 
+             newTextInput("comment", "")
+             .log()
+             .lines(0)
+             .size(300, 50)
+             ,
+
+             newText("commenttext", "Comment (optional):")
+             .css("font-size", "18px")
+             ,
+
+             newCanvas("commentcanvas", 600, 70)
+             .add(0, 20, getText("commenttext"))
+             .add(0, 40, getTextInput("id"))
+             .print()
+             ,
+
              newCanvas("space", 1, 50)
              .print()
 
+             ,
+
+             newText("tip", "You need to answer all questions before clicking on <i>next</i>!")
+             .css("font-size", "14px")
+             .print()
              ,
 
              //newText("faster", "Please be faster!")
