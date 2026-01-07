@@ -219,8 +219,7 @@ PennController("PersonalData",
 
                      .and(getDropDown("language")
                        .testNot.selected("Below B1")
-                        )
-                          ) //ende language scale
+                     ) //ende language scale
 
                       //.and(getTextInput("id")
                       //  .test.text(/^(?!\s*$).+/) //matched a string that contains at least one non-space character
