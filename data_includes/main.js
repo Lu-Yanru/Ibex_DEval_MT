@@ -462,12 +462,12 @@ PennController.Template("practice.csv", variable =>
              ,
 
              newText("commenttext", "Comment (optional):")
-             .css("font-size", "18px")
+             //.css("font-size", "18px")
              ,
 
              newCanvas("commentcanvas", 600, 70)
              .add(0, 20, getText("commenttext"))
-             .add(0, 40, getTextInput("id"))
+             .add(0, 50, getTextInput("comment"))
              .print()
              ,
 
@@ -476,7 +476,7 @@ PennController.Template("practice.csv", variable =>
 
              ,
 
-             newText("tip", "You need to answer all questions before clicking on <i>next</i>!")
+             newText("tip", "You need to answer all 3 questions before clicking on <i>next</i>!")
              .css("font-size", "14px")
              .print()
              ,
@@ -661,12 +661,12 @@ PennController.Template("test.csv", variable =>
              ,
 
              newText("commenttext", "Comment (optional):")
-             .css("font-size", "18px")
+             //.css("font-size", "18px")
              ,
 
              newCanvas("commentcanvas", 600, 70)
              .add(0, 20, getText("commenttext"))
-             .add(0, 40, getTextInput("id"))
+             .add(0, 50, getTextInput("comment"))
              .print()
              ,
 
@@ -675,7 +675,7 @@ PennController.Template("test.csv", variable =>
 
              ,
 
-             newText("tip", "You need to answer all questions before clicking on <i>next</i>!")
+             newText("tip", "You need to answer all 3 questions before clicking on <i>next</i>!")
              .css("font-size", "14px")
              .print()
              ,
